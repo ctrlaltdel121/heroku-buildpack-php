@@ -64,6 +64,8 @@ S3_URL="https://lang-php.s3.amazonaws.com/dist-${STACK}-${S3_URL:-"master"}"
 RTVS_URL="https://php-runtime-version-selector.herokuapp.com"
 
 cd $BUILD_DIR
+pv=`python -V`
+status "Python Version: $pv"
 
 if [[ -s "composer.json" ]]; then
     cat composer.json | python -mjson.tool &> /dev/null || error "Could not parse composer.json; make sure it's valid!"
